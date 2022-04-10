@@ -1,5 +1,5 @@
-// The entry file of your WebAssembly module.
+import { Transaction } from "./model";
 
-export function add(a: i32, b: i32): i32 {
-  return a + b;
+export function create(transaction:u32, message:string): Transaction {
+  return Transaction.insert(transaction, message);
 }
