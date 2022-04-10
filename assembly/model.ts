@@ -16,4 +16,12 @@ export class Transaction {
         this.transaction = transaction;
         this.done = false;
     }
+
+    static insert(transaction: u32, message: string){
+        const tx = new Transaction(transaction, message);
+
+        map.set(tx.id, tx);
+
+        return tx;
+    }
 }
