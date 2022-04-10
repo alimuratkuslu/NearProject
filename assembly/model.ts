@@ -17,7 +17,7 @@ export class Transaction {
         this.done = false;
     }
 
-    static insert(transaction: u32, message: string){
+    static insert(transaction: u32, message: string): Transaction{
         const tx = new Transaction(transaction, message);
 
         map.set(tx.id, tx);
