@@ -47,4 +47,8 @@ export class Transaction {
 
         return tx;
     }
+
+    static deleteById(id:u32): Transaction {
+        map.delete(id);
+    }
 }
