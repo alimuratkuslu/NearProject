@@ -24,4 +24,8 @@ export class Transaction {
 
         return tx;
     }
+
+    static findTxById(id: u32): Transaction {
+        return map.getSome(id);
+    }
 }
