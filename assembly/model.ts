@@ -3,6 +3,13 @@ import{PersistentUnorderedMap, math} from "near-sdk-as";
 export const map = new PersistentUnorderedMap<u32, Transaction>("map");
 
 @nearBindgen
+export class PartialTransaction {
+    transaction: u32;
+    message: string;
+    done: bool;
+}
+
+@nearBindgen
 export class Transaction {
 
     id: u32;
