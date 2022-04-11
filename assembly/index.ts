@@ -11,3 +11,7 @@ export function getById(id: u32): Transaction {
 export function update(id: u32, updates: PartialTransaction): Transaction {
   return Transaction.update(id,updates);
 }
+
+export function del(id: u32): void {
+  Transaction.deleteById(id);
+}
