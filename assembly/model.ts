@@ -35,4 +35,16 @@ export class Transaction {
     static findTxById(id: u32): Transaction {
         return map.getSome(id);
     }
+
+    static update(id: u32, partial: PartialTransaction):Transaction {
+        const tx = this.findTxById(id);
+
+        tx.transaction = partial.transaction;
+        tx.message = partial.message;
+        tx.done = partial.done;
+
+        map.set(id,tx);
+
+        return tx;
+    }
 }
