@@ -1,17 +1,17 @@
-import { PartialTransaction, Transaction } from "./model";
+import { PartialMovie, Movie } from "./model";
 
-export function create(transaction:u32, message:string): Transaction {
-  return Transaction.insert(transaction, message);  
+export function create(name: string, price: f32, rating: f32, duration: u32, description: string): Movie {
+  return Movie.insert(name, price, rating, duration, description);  
 }
 
-export function getById(id: u32): Transaction {
-  return Transaction.findTxById(id);
+export function getById(id: u32): Movie {
+  return Movie.findMovieById(id);
 }
 
-export function update(id: u32, updates: PartialTransaction): Transaction {
-  return Transaction.update(id,updates);
+export function update(id: u32, updates: PartialMovie): Movie {
+  return Movie.update(id,updates);
 }
 
 export function del(id: u32): void {
-  Transaction.deleteById(id);
+  Movie.deleteById(id);
 }
