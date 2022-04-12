@@ -5,10 +5,10 @@ export const map = new PersistentUnorderedMap<u32, Movie>("map");
 @nearBindgen
 export class PartialMovie {
     name: string;
-    price: u32;
+    price: f32;
     rating: f32;
     duration: u32;
-    description: string;
+    type: string;
 }
 
 @nearBindgen
@@ -19,23 +19,27 @@ export class Movie {
     price: f32;
     rating: f32;
     duration: u32;
-    description: string;
+    type: string;
 
-    constructor(name: string, price: f32, rating: f32, duration: u32, description: string){
+    constructor(name: string, price: f32, rating: f32, duration: u32, type: string){
         this.id = math.hash32<string>(name);
         this.name = name;
         this.price = price;
         this.rating = rating;
         this.duration = duration;
-        this.description = description;
+        this.type = type;
     }
 
-    static insert(name: string, price: f32, rating: f32, duration: u32, description: string): Movie{
-        const movie = new Movie(name,price,rating, duration, description);
+    static insert(name: string, price: f32, rating: f32, duration: u32, type: string): Movie{
+        const movie = new Movie(name,price,rating, duration, type);
         
         map.set(movie.id, movie);
 
         return movie;
+    }
+
+    static findAll(offset: u32, limit: u32): Movie[] {
+        return map.values(offset, offset + limit);
     }
 
     static findMovieById(id: u32): Movie {
@@ -49,7 +53,7 @@ export class Movie {
         movie.price = partial.price;
         movie.rating = partial.rating;
         movie.duration = partial.duration;
-        movie.description = partial.description;
+        movie.type = partial.type;
 
         map.set(id,movie);
 
