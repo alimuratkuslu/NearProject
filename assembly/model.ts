@@ -1,4 +1,4 @@
-import{PersistentUnorderedMap,context, logging, math, storage} from "near-sdk-as";
+import{PersistentUnorderedMap,context, logging, math, storage, u128, ContractPromiseBatch} from "near-sdk-as";
 
 export const map = new PersistentUnorderedMap<u32, Movie>("map");
 
@@ -68,16 +68,31 @@ export class Movie {
         map.delete(id);
     }
 
-    static buyMovieById(id:u32): Movie {
+    static buyMovieById(accountId:string, id:u32): String {
         const movie = this.findMovieById(id);
-        if(movie.stock==0){
+        let cur_Sender = context.sender;
+        let amount = context.attachedDeposit;
+
+        logging.log("Sender: " + cur_Sender);
+        logging.log("Attached Amount: " + (amount).toString());
+
+        const to_beneficiary = ContractPromiseBatch.create(accountId);
+        const amount_to_receive = amount;
+        const bal = context.accountBalance;
+
+        to_beneficiary.transfer(amount_to_receive);
+
+        /*if(movie.stock==0){
             map.delete(id);
         }
         else{
             movie.stock = movie.stock - 1;
-        }
+        }*/
 
-       return movie;
+        if(amount > bal){
+            return "You do not have enough balance"
+        }
+        return "You have bought the movie " + movie.name + " successfully";
     }
 
     static rentMovieById(id:u32): Movie {
