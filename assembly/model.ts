@@ -79,4 +79,12 @@ export class Movie {
 
        return movie;
     }
+
+    static rentMovieById(id:u32): Movie {
+        const movie = this.findMovieById(id);
+        movie.price = movie.price * 0.25;
+
+        return movie;
+        
+    }
 }
