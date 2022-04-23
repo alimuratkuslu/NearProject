@@ -1,4 +1,4 @@
-import{PersistentUnorderedMap, math} from "near-sdk-as";
+import{PersistentUnorderedMap,context, logging, math, storage} from "near-sdk-as";
 
 export const map = new PersistentUnorderedMap<u32, Movie>("map");
 
