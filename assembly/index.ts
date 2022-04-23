@@ -20,6 +20,10 @@ export function getAll(offset: u32, limit:u32 = map.length): Movie[]{
   return Movie.findAll(offset, limit);
 }
 
-export function buyMovieById(id:u32): Movie {
-   return Movie.buyMovieById(id);
+export function buyMovieById(accountId: string, id:u32): String {
+   return Movie.buyMovieById(accountId, id);
+}
+
+export function rentMovie(id: u32): Movie {
+  return Movie.rentMovieById(id);
 }
