@@ -1,5 +1,6 @@
 # NEAR Movie Marketplace Project
 The main idea of this project is to allow users to buy or rent their favourite movie with NEAR.
+
 Video Link: 
 
 # How to use:
