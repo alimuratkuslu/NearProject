@@ -82,24 +82,38 @@ export class Movie {
 
         to_beneficiary.transfer(amount_to_receive);
 
-        /*if(movie.stock==0){
-            map.delete(id);
-        }
-        else{
-            movie.stock = movie.stock - 1;
-        }*/
-
         if(amount > bal){
-            return "You do not have enough balance"
+            return cur_Sender + " does not have enough balance"
         }
-        return "You have bought the movie " + movie.name + " successfully";
+        return cur_Sender + " has bought the movie " + movie.name + " successfully";
     }
 
-    static rentMovieById(id:u32): Movie {
+    static seeRentPrice(id: u32): Movie {
+        const movie = this.findMovieById(id);
+        movie.price = movie.price * 0.1;
+
+        return movie;
+    }
+
+    static rentMovieById(accountId: string, id:u32): String {
         const movie = this.findMovieById(id);
         movie.price = movie.price * 0.25;
 
-        return movie;
+        let cur_sen = context.sender;
+        let amount = context.attachedDeposit;
+
+        logging.log("Sender: " + cur_sen);
+        logging.log("Attached Amount: " + (amount).toString());
+
+        const to_benef = ContractPromiseBatch.create(accountId);
+        const amount_receive = amount;
+        const balance = context.accountBalance;
+        to_benef.transfer(amount_receive);
+
+        if(amount > balance){
+            return cur_sen + " does not have enough balance"
+        }
+        return cur_sen + " has rented the movie " + movie.name + " successfully";
         
     }
 }
