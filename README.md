@@ -5,7 +5,7 @@ Video Link:
 # How to use:
 * First clone the repositry
 * Run yarn build:release && yarn deploy 
-* Export the contract with "export CONTRACT=dev-...."
+* Export the contract with ```export CONTRACT=dev-....```
 * And then feel free to explore the contract
 
 # NEAR CLI
