@@ -24,6 +24,10 @@ export function buyMovieById(accountId: string, id:u32): String {
    return Movie.buyMovieById(accountId, id);
 }
 
-export function rentMovie(id: u32): Movie {
-  return Movie.rentMovieById(id);
+export function seeRentPriceById(id: u32): Movie{
+  return Movie.seeRentPrice(id);
+}
+
+export function rentMovie(accountId: string, id: u32): String {
+  return Movie.rentMovieById(accountId, id);
 }
