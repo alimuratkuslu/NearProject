@@ -71,7 +71,7 @@ near call $CONTRACT rentMovie '{"accountId":"alimuratkuslu.testnet", "id": 40950
 
 # Used Technology:
 * NEAR sdk
-* NEAR cli
+* NEAR cli => ```npm install --global near-cli```
 * NEAR-api-js
 * Assembly script for writing the contract
 
