@@ -58,7 +58,7 @@ near call $CONTRACT buyMovieById '{"accountId": "alimuratkuslu.testnet", "id": 4
 
 7- See movie's rent price:
 ```
-near view $CONTRACT seeRentPrice '{"id": 4095065979}' --accountId alimuratkuslu.testnet
+near view $CONTRACT seeRentPriceById '{"id": 4095065979}' --accountId alimuratkuslu.testnet
 ```
 * With this command we can see the movie's rent price 
 
