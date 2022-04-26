@@ -1,4 +1,4 @@
-import{PersistentUnorderedMap,context, logging, math, storage, u128, ContractPromiseBatch} from "near-sdk-as";
+import{PersistentUnorderedMap, context, logging, math, storage, u128, ContractPromiseBatch} from "near-sdk-as";
 
 export const map = new PersistentUnorderedMap<u32, Movie>("map");
 
@@ -82,9 +82,14 @@ export class Movie {
 
         to_beneficiary.transfer(amount_to_receive);
 
+        let output: bool = true;
+
         if(amount > bal){
-            return cur_Sender + " does not have enough balance"
+            output = false;
+            assert(output = false, "You do not have sufficient funds");
+            return "You do not have sufficient funds";
         }
+
         return cur_Sender + " has bought the movie " + movie.name + " successfully";
     }
 
@@ -110,8 +115,12 @@ export class Movie {
         const balance = context.accountBalance;
         to_benef.transfer(amount_receive);
 
+        let output: bool = true;
+
         if(amount > balance){
-            return cur_sen + " does not have enough balance"
+            output = false;
+            assert(output = false, "You do not have sufficient funds");
+            return "You do not have sufficient funds";
         }
         return cur_sen + " has rented the movie " + movie.name + " successfully";
         
