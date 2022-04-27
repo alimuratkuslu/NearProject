@@ -8,4 +8,5 @@ echo 'About to call del() on the contract'
 echo sudo near call \$CONTRACT del '{"id": '$MOVIEID'}' --accountId \$CONTRACT 
 echo
 echo \$CONTRACT is $CONTRACT
+echo \$MOVIEID is $MOVIEID
 sudo near call $CONTRACT del '{"id": '$MOVIEID'}' --accountId $CONTRACT
