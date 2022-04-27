@@ -14,5 +14,5 @@ echo --------------------------------------------
 echo run the following commands
 echo
 echo 'export MOVIEID=<movie_id>'
-echo
+echo 'export MOVIEPRICE=<movie_price>'
 echo
