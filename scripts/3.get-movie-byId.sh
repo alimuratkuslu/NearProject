@@ -8,4 +8,5 @@ echo 'About to call getById() on the contract'
 echo near view \$CONTRACT getById '{"id": '$MOVIEID'}' --accountId \$CONTRACT 
 echo
 echo \$CONTRACT is $CONTRACT
+echo \$MOVIEID is $MOVIEID
 near view $CONTRACT getById '{"id": '$MOVIEID'}' --accountId $CONTRACT
