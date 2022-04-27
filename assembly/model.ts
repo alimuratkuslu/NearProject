@@ -90,7 +90,7 @@ export class Movie {
             return "You do not have sufficient funds";
         }
 
-        return cur_Sender + " has bought the movie " + movie.name + " successfully";
+        return cur_Sender + " has bought the movie " + movie.name + " successfully for " + movie.price.toString();
     }
 
     static seeRentPrice(id: u32): Movie {
@@ -102,7 +102,7 @@ export class Movie {
 
     static rentMovieById(accountId: string, id:u32): String {
         const movie = this.findMovieById(id);
-        movie.price = movie.price * 0.25;
+        movie.price = movie.price * 0.1;
 
         let cur_sen = context.sender;
         let amount = context.attachedDeposit;
@@ -122,7 +122,7 @@ export class Movie {
             assert(output = false, "You do not have sufficient funds");
             return "You do not have sufficient funds";
         }
-        return cur_sen + " has rented the movie " + movie.name + " successfully";
+        return cur_sen + " has rented the movie " + movie.name + " successfully for " + movie.price.toString();
         
     }
 }
